@@ -247,7 +247,7 @@ class TTGammaProcessor(processor.ProcessorABC):
         mass_axis = hist.axis.Regular(400, 0.0, 400, name="mass", label=r"$m_{\ell\gamma}$ [GeV]")
         pt_axis = hist.axis.Regular(200, 0.0, 1000, name="pt", label=r"$p_{T}$ [GeV]")
         eta_axis = hist.axis.Regular(300, -1.5, 1.5, name="eta", label=r"$\eta_{\gamma}$")
-        chIso_axis = hist.axis.Regular(400, -0.1, 20.001, name="chIso", label=r"Charged Hadron Isolation")
+        chIso_axis = hist.axis.Regular(400, -0.1, 20.0, name="chIso", label=r"Charged Hadron Isolation")
 
         ## Define axis to keep track of photon category
         phoCategory_axis = hist.axis.IntCategory([1, 2, 3, 4, 5], name="category", label=r"Photon Category")
@@ -875,14 +875,14 @@ class TTGammaProcessor(processor.ProcessorABC):
                 )
 
                 # fill M3 histogram, for events passing the phosel selection
-                output["M3"].fill(
-                    dataset=dataset,
-                    M3=np.asarray(ak.flatten(M3[phosel])),
-                    category=np.asarray(phoCategory[phosel]),
-                    lepFlavor=lepton,
-                    systematic=syst,
-                    weight=evtWeight[phosel],
-                )
+#                output["M3"].fill(
+#                    dataset=dataset,
+#                    M3=np.asarray(ak.flatten(M3[phosel])),
+#                    category=np.asarray(phoCategory[phosel]),
+#                    lepFlavor=lepton,
+#                    systematic=syst,
+#                    weight=evtWeight[phosel],
+#                )
 
             # use the selection.all() method to select events passing the eleSel or muSel selection,
             # and the 3-jet 0-btag selection, and have exactly one photon
